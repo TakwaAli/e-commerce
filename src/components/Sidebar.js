@@ -7,7 +7,7 @@ import { SidebarContext } from '../contexts/SidebarContext';
 import { CartContext } from '../contexts/CartContext';
 
 const Sidebar = () => {
-  const {cart}=useContext(CartContext)
+  const {cart,removeFromCart }=useContext(CartContext)
   console.log(cart,'takwa ali');
  const {isOpen,handleClose}= useContext(SidebarContext)
 
