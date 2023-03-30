@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import {IoMdArrowForward}from 'react-icons/io'
 import {FiTrash2}from 'react-icons/fi'
 import CartItem from '../components/CartItem'
@@ -26,10 +25,10 @@ const Sidebar = () => {
       })}
     </div>
     
-    <div>
+    <div className='flex w-full flex-col gap-y-3 py-4 mt-4'>
       <div className='flex w-full justify-between items-center '>
-        <div>
-          <span>Total: </span>%1000
+        <div className='font-semibold'>
+          <span className='mr-2'>Total: </span>$1000
         </div>
         <div onClick={()=>clearCart()} className='cursor-pointer bg-red-500 text-white py-4 w-12 h-12 flex justify-center items-center text-xl'>
           <FiTrash2/>

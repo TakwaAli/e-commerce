@@ -1,21 +1,4 @@
-/* import React ,{createContext,useState,useEffect}from 'react';
- 
 
-export const CartContext =createContext();
-
-const CartProvider = ({childern}) => {
-  const [cart,setCart]=useState([]);
-
-
-  const addToCart = ()=>{
-    console.log("add to card");
-  };
-  return <CartContext.Provider value={addToCart}>
-    {childern}
-    </CartContext.Provider>
-};
-
-export default CartProvider; */
 import React ,{createContext,useState}from 'react';
 export const CartContext =createContext()
 const CartProvider = ({children}) => {
@@ -53,7 +36,12 @@ const CartProvider = ({children}) => {
   const clearCart =()=>{
     setCart([])
   }
-  return <CartContext.Provider value={{cart,addToCart,removeFromCart,clearCart}}>
+
+  const increaseAmount=(id)=>{
+    const item =cart.find((item)=>item.id === id );
+   addToCart(item,id)
+  }
+  return <CartContext.Provider value={{cart,addToCart,removeFromCart,clearCart,increaseAmount}}>
 
     {children}
   </CartContext.Provider>;
