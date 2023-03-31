@@ -1,10 +1,19 @@
 
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 export const CartContext = createContext()
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
 const [itemAmount,setItemAmount]=useState(0)
+
+useEffect(()=>{
+if (cart) {
+  const amount =cart.reduce((accumulator,currentItem)=>{
+    return accumulator + currentItem.amount;
+  },0)
+  setItemAmount(amount)
+}
+},[cart])
   const addToCart = (productitem, id) => {
     const newItem = { ...productitem, amount: 1 }
     /* console.log(`item ${id},${productitem}add to card`);

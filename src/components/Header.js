@@ -9,9 +9,16 @@ import Logo from '../img/logo.svg'
 const Header = () => {
   const {isOpen,setIsopen} =useContext(SidebarContext);
   const {itemAmount,setItemAmount} =useContext(CartContext);
+  const [isActive,setIsActive]=useState(false);
+
+  useEffect(()=>{
+    window.addEventListener('scroll',()=>{
+      window.scrollY > 60 ? setIsActive(true) :setIsActive(false)
+    })
+  })
   return (
 
-  <header className='bg-pink-200'>
+  <header className={`${isActive ? 'bg-white py-4 shadow-md':'bg-none py-6 '} fixed w-full z-10 transition-all`}>
 
     <div className='container mx-auto  flex items-center justify-between h-full'> 
   <Link to={'/'}>
