@@ -2,9 +2,17 @@
 import React, { createContext, useEffect, useState } from 'react';
 export const CartContext = createContext()
 const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
-
+const [cart, setCart] = useState([]);
 const [itemAmount,setItemAmount]=useState(0)
+const [total,settotal]=useState(0);
+useEffect(()=>{
+  
+  const total =cart.reduce((accumulator,currentItem)=>{
+    return accumulator + currentItem.price*currentItem.amount;
+  },0)
+  settotal(total)
+
+})
 
 useEffect(()=>{
 if (cart) {
@@ -74,7 +82,8 @@ if (cart) {
     
   }
 
-return <CartContext.Provider value={{itemAmount ,cart, addToCart, removeFromCart, clearCart, increaseAmount, decreaseAmount }}>
+return <CartContext.Provider value={{itemAmount ,cart, addToCart, removeFromCart,
+ clearCart, increaseAmount, decreaseAmount,total }}>
 
     {children}
   </CartContext.Provider>;

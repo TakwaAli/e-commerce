@@ -6,7 +6,7 @@ import { SidebarContext } from '../contexts/SidebarContext';
 import { CartContext } from '../contexts/CartContext';
 import styles from'./Sidebar.css'
 const Sidebar = () => {
-  const {cart,clearCart }=useContext(CartContext)
+  const {cart,clearCart ,total}=useContext(CartContext)
   console.log(cart,'takwa ali');
  const {isOpen,handleClose}= useContext(SidebarContext)
 
@@ -20,7 +20,7 @@ const Sidebar = () => {
       </div>
     </div>
     <div className='flex flex-col gap-y-2 h-[520px] lg:h-[640px] 
-    overflow-y-auto overflow-x-hidden border-b'>
+    overflow-y-auto overflow-x-hidden border-b '>
       {cart.map((item)=>{
         return <CartItem item={item} key={item.id} />
       })}
@@ -29,7 +29,7 @@ const Sidebar = () => {
     <div className='flex w-full flex-col gap-y-3 py-4 mt-4'>
       <div className='flex w-full justify-between items-center '>
         <div className='font-semibold'>
-          <span className='mr-2'>Total: </span>$1000
+          <span className='mr-2'>Total: </span>$ {parseFloat(total).toFixed(2) }
         </div>
         <div onClick={()=>clearCart()} className='cursor-pointer bg-red-500 text-white py-4 w-12 h-12 flex justify-center items-center text-xl'>
           <FiTrash2/>

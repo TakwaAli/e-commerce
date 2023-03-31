@@ -10,7 +10,7 @@ const App = () => {
   return <div className='overflow-hidden'>
 <Router>
   <Header></Header>
-  <FilterProduct></FilterProduct>
+  {/* <FilterProduct></FilterProduct> */}
   <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path='/product/:id' element={<ProductDetails/>}/>
