@@ -24,9 +24,7 @@ if (cart) {
 },[cart])
   const addToCart = (productitem, id) => {
     const newItem = { ...productitem, amount: 1 }
-    /* console.log(`item ${id},${productitem}add to card`);
-     */
-    //console.log(newItem);
+   
 
     const cartItem = cart.find((item) => {
       return item.id === id;
@@ -39,9 +37,10 @@ if (cart) {
           return item;
         }
       });
-      setCart(newCart)
+      
+     localStorage.setItem('cart',JSON.stringify(setCart(newCart)))
     } else {
-      setCart([...cart, newItem])
+      localStorage.setItem('cart',JSON.stringify(setCart([...cart, newItem])))
     }
   };
   //console.log(cart)
